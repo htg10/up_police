@@ -3,7 +3,10 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-sm-6 text-center text-sm-start text-muted">
-                &copy; <script>document.write(new Date().getFullYear())</script> <strong>UP Police (ATS)</strong>
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> <strong>UP Police (ATS)</strong>
             </div>
             <div class="col-sm-6 text-center text-sm-end">
                 Designed & Developed by

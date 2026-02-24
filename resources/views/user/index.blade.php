@@ -27,16 +27,16 @@
             <div class="row g-4">
 
                 <div class="col-md-6 col-lg-4">
-                    <a href="/admin/users" class="card-link">
-                        <div class="card card-users shadow-lg text-white border-0">
+                    <a href="/user/daks" class="card-link">
+                        <div class="card card-daks shadow-lg text-white border-0">
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div>
-                                        <p class="fw-semibold fs-6 mb-1">User</p>
-                                        <h3 class="mb-0 fw-bold"></h3>
+                                        <p class="fw-semibold fs-6 mb-1">Total Daks</p>
+                                        <h3 class="mb-0 fw-bold">{{ $userDaks }}</h3>
                                     </div>
                                     <div class="card-icon display-6">
-                                        <i class="bx bx-user" style="color: navy"></i>
+                                        <i class="bx bx-file" style="color: navy"></i>
                                     </div>
                                 </div>
                             </div>

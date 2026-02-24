@@ -133,16 +133,18 @@
 
             <div class="mb-3">
                 <label for="email" class="form-label">Email Address</label>
-                <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email"
+                    required>
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Password</label>
+                <label for="password" class="form-label">Password</label>
                 <div class="input-group auth-pass-inputgroup">
                     <input type="password" name="password" class="form-control" id="password"
                         placeholder="Enter password" required>
-                    <button class="btn btn-primary" type="button" id="password-addon">
-                        <i class="mdi mdi-eye-outline"></i>
+                    <button class="btn btn-primary" type="button"
+                        onclick="togglePasswordVisibility('password', 'password-addon1')">
+                        <i class="mdi mdi-eye-outline" id="password-addon1"></i>
                     </button>
                 </div>
             </div>
@@ -172,7 +174,7 @@
     @yield('script')
 
     <!-- Password Toggle -->
-    <script>
+    {{-- <script>
         document.getElementById('password-addon').addEventListener('click', function() {
             const passwordField = document.getElementById('password');
             const icon = this.querySelector('i');
@@ -187,6 +189,19 @@
                 icon.classList.add('mdi-eye-outline');
             }
         });
+    </script> --}}
+    <script>
+        function togglePasswordVisibility(passwordFieldId, iconId) {
+            const passwordField = document.getElementById(passwordFieldId);
+            const icon = document.getElementById(iconId);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.classList.replace("mdi-eye-outline", "mdi-eye-off-outline");
+            } else {
+                passwordField.type = "password";
+                icon.classList.replace("mdi-eye-off-outline", "mdi-eye-outline");
+            }
+        }
     </script>
 
 </body>

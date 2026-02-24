@@ -7,13 +7,7 @@
                 <li class="menu-title text-muted">Main</li>
 
                 <li>
-                    <a href="{{ url(
-                        auth()->user()->role_id == 1
-                            ? '/superadmin/index'
-                            : (auth()->user()->role_id == 2
-                                ? '/admin/index'
-                                : '/user/index'),
-                    ) }}"
+                    <a href="{{ url(auth()->user()->role_id == 1 ? '/admin/index' : '/user/index') }}"
                         class="waves-effect d-flex align-items-center">
                         <i class="bx bx-home-circle me-2 fs-5"></i>
                         <span>Dashboard</span>
@@ -21,18 +15,34 @@
                 </li>
 
                 @if (auth()->user()->role_id == 1)
-                    <li class="menu-title text-muted">Super Admin Panel</li>
+                    <li class="menu-title text-muted">Admin Panel</li>
                     <!-- Users -->
                     <li class="mt-2">
-                        <a href="#" class="waves-effect d-flex align-items-center">
+                        <a href="/admin/user" class="waves-effect d-flex align-items-center">
                             <i class="bx bx-user me-2 fs-5"></i>
                             <span>All Users</span>
                         </a>
                     </li>
+                    <li class="mt-2">
+                        <a href="/admin/daks" class="waves-effect d-flex align-items-center">
+                            <i class="bx bx-file me-2 fs-5"></i>
+                            <span>All Daks</span>
+                        </a>
+                    </li>
                 @elseif (auth()->user()->role_id == 2)
                     <li class="menu-title text-muted">Admin Panel</li>
-                @elseif (auth()->user()->role_id == 3)
-                    <li class="menu-title text-muted">User Panel</li>
+                    <li class="mt-2">
+                        <a href="/user/daks/create" class="waves-effect d-flex align-items-center">
+                            <i class="bx bx-file me-2 fs-5"></i>
+                            <span>Add New Dak</span>
+                        </a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="/user/daks" class="waves-effect d-flex align-items-center">
+                            <i class="bx bx-file me-2 fs-5"></i>
+                            <span>All Daks</span>
+                        </a>
+                    </li>
                 @else
                     <p>No role assigned</p>
                 @endif

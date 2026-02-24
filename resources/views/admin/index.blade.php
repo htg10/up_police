@@ -32,11 +32,30 @@
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div>
-                                        <p class="fw-semibold fs-6 mb-1">Admin</p>
-                                        <h3 class="mb-0 fw-bold"></h3>
+                                        <p class="fw-semibold fs-6 mb-1">Total Users</p>
+                                        <h3 class="mb-0 fw-bold">{{ $users }}</h3>
                                     </div>
                                     <div class="card-icon display-6">
                                         <i class="bx bx-user" style="color: navy"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                {{-- Total Daks --}}
+                <div class="col-md-6 col-lg-4">
+                    <a href="/admin/daks" class="card-link">
+                        <div class="card card-daks shadow-lg text-white border-0">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <p class="fw-semibold fs-6 mb-1">Total Daks</p>
+                                        <h3 class="mb-0 fw-bold">{{ $adminDaks }}</h3>
+                                    </div>
+                                    <div class="card-icon display-6">
+                                        <i class="bx bx-file" style="color: navy"></i>
                                     </div>
                                 </div>
                             </div>

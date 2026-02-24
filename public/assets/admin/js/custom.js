@@ -14,9 +14,9 @@ $(document).ready(function () {
 });
 
 // For dropify Js
-$(document).ready(function () {
-    $('.dropify').dropify();
-});
+// $(document).ready(function () {
+//     $('.dropify').dropify();
+// });
 
 // For Meta Field Js
 // $(document).ready(function(){
@@ -29,9 +29,9 @@ $(document).ready(function () {
 //     });
 // });
 
-document.getElementById('vertical-menu-btn').addEventListener('click', function () {
-    const logoText = document.querySelector('.navbar-brand-box span');
-    if (logoText) {
-        logoText.classList.toggle('d-none');
-    }
-});
+// document.getElementById('vertical-menu-btn').addEventListener('click', function () {
+//     const logoText = document.querySelector('.navbar-brand-box span');
+//     if (logoText) {
+//         logoText.classList.toggle('d-none');
+//     }
+// });

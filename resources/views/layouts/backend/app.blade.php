@@ -4,13 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    {{-- <title>Admin | StarkLikes</title> --}}
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     @yield('meta')
     @include('layouts.backend.partials.style')
-     <!-- Boxicons for icons -->
+    <!-- Boxicons for icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
 
@@ -53,10 +52,10 @@
             document.getElementById(id).value = finalvalue;
         }
 
-        setTimeout(function() {
-            $(".alert").fadeOut();
-        }, 3000);
-    </script>
+    //     setTimeout(function() {
+    //         $(".alert").fadeOut();
+    //     }, 3000);
+    // </script>
 
 
     @include('layouts.backend.partials.script')

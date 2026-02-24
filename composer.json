@@ -88,5 +88,10 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Jay Kushwah"
+        }
+    ]
 }

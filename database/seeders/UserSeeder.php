@@ -40,16 +40,16 @@ class UserSeeder extends Seeder
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ],
-                [
-                    'role_id' => 3,
-                    'name' => 'Normal User',
-                    'mobile' => 4444444444,
-                    'email' => 'user@gmail.com',
-                    'email_verified_at' => Carbon::now(),
-                    'password' => bcrypt('User@1234'),
-                    'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now(),
-                ],
+                // [
+                //     'role_id' => 3,
+                //     'name' => 'Normal User',
+                //     'mobile' => 4444444444,
+                //     'email' => 'user@gmail.com',
+                //     'email_verified_at' => Carbon::now(),
+                //     'password' => bcrypt('User@1234'),
+                //     'created_at' => Carbon::now(),
+                //     'updated_at' => Carbon::now(),
+                // ],
             ]);
 
         }
