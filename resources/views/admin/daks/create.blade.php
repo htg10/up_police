@@ -43,9 +43,9 @@
                                                 <sup class="text-danger">*</sup>
                                             </label>
                                             <select id="dak_type" name="type" class="form-control" required>
-                                                <option value="">-- Select --</option>
+                                                {{-- <option value="">-- Select --</option> --}}
                                                 <option value="inward">बाहर से आने वाली डाक / Inward</option>
-                                                <option value="outward">बाहर को जाने वाली डाक / Outward</option>
+                                                {{-- <option value="outward">बाहर को जाने वाली डाक / Outward</option> --}}
                                             </select>
                                             <div class="invalid-feedback">This field is required.</div>
                                         </div>

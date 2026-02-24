@@ -42,11 +42,11 @@
                                                 डाक का प्रकार / Dak Type
                                             </label>
                                             <select name="type" class="form-control" required>
-                                                <option value="inward" {{ $dak->type == 'inward' ? 'selected' : '' }}>Inward
+                                                <option value="inward" {{ $dak->type == 'inward' ? 'selected' : '' }}>बाहर से आने वाली डाक / Inward
                                                 </option>
-                                                <option value="outward" {{ $dak->type == 'outward' ? 'selected' : '' }}>
+                                                {{-- <option value="outward" {{ $dak->type == 'outward' ? 'selected' : '' }}>
                                                     Outward
-                                                </option>
+                                                </option> --}}
                                             </select>
                                         </div>
                                     </div>

@@ -86,12 +86,15 @@
                                         </form>
                                     </td>
                                     <td>
+                                        <!-- Export Safe Value -->
+                                        <span class="export-remark d-none">{{ $dak->remark }}</span>
+
                                         <form method="POST" action="{{ route('admin.daks.updateRemark', $dak->id) }}">
                                             @csrf
                                             @method('PATCH')
                                             <input type="text" name="remark" value="{{ $dak->remark }}"
-                                                class="form-control form-control-sm" placeholder="Enter remark"
-                                                onchange="this.form.submit()">
+                                                class="form-control form-control-sm" onchange="this.form.submit()"
+                                                placeholder="Enter Remark">
                                         </form>
                                     </td>
                                     <td class="text-center">
@@ -167,8 +170,8 @@
                                             return selectedText ? selectedText.trim() : '';
                                         }
 
-                                        if ($(node).find('input').length) {
-                                            return $(node).find('input').val();
+                                        if ($(node).find('.export-remark').length) {
+                                            return $(node).find('.export-remark').text().trim();
                                         }
 
                                         return $(node).text().trim();
@@ -205,15 +208,30 @@
                                     },
                                     body: function(data, row, column, node) {
 
+                                        let $node = $(node).clone();
+
+                                        // remove form elements (they cause new line issue)
+                                        $node.find('form').remove();
+                                        $node.find('select').remove();
+                                        $node.find('input').remove();
+                                        $node.find('button').remove();
+
+                                        // get selected text from dropdown
                                         if ($(node).find('select').length) {
-                                            return $(node).find('select option:selected').text();
+                                            let selectedText = $(node).find(
+                                                'select option:selected').text();
+                                            return selectedText ? selectedText.replace(/\s+/g, ' ')
+                                                .trim() : '';
                                         }
 
-                                        if ($(node).find('input').length) {
-                                            return $(node).find('input').val();
+                                        // remark safe export
+                                        if ($(node).find('.export-remark').length) {
+                                            return $(node).find('.export-remark').text().replace(
+                                                /\s+/g, ' ').trim();
                                         }
 
-                                        return data;
+                                        // default clean text (removes line breaks)
+                                        return $node.text().replace(/\s+/g, ' ').trim();
                                     }
                                 }
                             }
@@ -248,8 +266,8 @@
                                             return $(node).find('select option:selected').text();
                                         }
 
-                                        if ($(node).find('input').length) {
-                                            return $(node).find('input').val();
+                                        if ($(node).find('.export-remark').length) {
+                                            return $(node).find('.export-remark').text().trim();
                                         }
 
                                         return data;

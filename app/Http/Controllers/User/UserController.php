@@ -52,7 +52,7 @@ class UserController extends Controller
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('daks', $filename);
+            $file->storeAs('daks', $filename, 'public');
             $data['attachment'] = $filename;
         }
 
@@ -75,7 +75,7 @@ class UserController extends Controller
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('daks', $filename);
+            $file->storeAs('daks', $filename, 'public');
             $data['attachment'] = $filename;
         }
 
