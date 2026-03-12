@@ -27,13 +27,13 @@
                         <thead class="table-light">
                             <tr>
                                 <th>क्रम संख्या<br>Sr.No</th>
-                                <th>प्रकार<br>Type</th>
+                                <th>स्रोत<br>Source</th>
                                 <th>पत्रांक संख्या<br>Letter No.</th>
                                 <th>दिनांक<br>Date</th>
                                 <th>संदर्भ<br>Subject</th>
                                 <th>उपयोगकर्ता प्रकार<br>User Type</th>
                                 <th>स्थिति<br>Status</th>
-                                <th>टिप्पणी<br>Remark</th>
+                                <th>छवि<br>Image</th>
                                 <th>कार्यवाही<br>Action</th>
                             </tr>
                         </thead>
@@ -50,16 +50,33 @@
                                         <form action="{{ route('user.daks.updateUser', $dak->id) }}" method="POST">
                                             @csrf
                                             @method('PATCH')
-                                            <select name="user_id" class="form-select form-select-sm"
-                                                onchange="this.form.submit()">
+
+                                            <select name="user_id" class="form-select form-select-sm">
                                                 <option value="">Select User</option>
+
                                                 @foreach ($users as $user)
                                                     <option value="{{ $user->id }}"
                                                         {{ $dak->user_id == $user->id ? 'selected' : '' }}>
+
                                                         {{ $user->name }}
+
                                                     </option>
                                                 @endforeach
+
                                             </select>
+
+                                            <input type="text" name="remark" class="form-control form-control-sm mt-1"
+                                                placeholder="Enter Remark">
+
+                                            <input type="date" name="pickup_date"
+                                                class="form-control form-control-sm mt-1">
+
+                                            <button type="submit" class="btn btn-sm btn-primary mt-1">
+
+                                                Assign
+
+                                            </button>
+
                                         </form>
                                     </td>
 
@@ -86,16 +103,14 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <!-- Export Safe Value -->
-                                        <span class="export-remark d-none">{{ $dak->remark }}</span>
-
-                                        <form method="POST" action="{{ route('admin.daks.updateRemark', $dak->id) }}">
-                                            @csrf
-                                            @method('PATCH')
-                                            <input type="text" name="remark" value="{{ $dak->remark }}"
-                                                class="form-control form-control-sm" onchange="this.form.submit()"
-                                                placeholder="Enter Remark">
-                                        </form>
+                                        @if (!empty($dak->attachment))
+                                            <a href="{{ route('user.daks.download', $dak->id) }}"
+                                                class="btn btn-sm btn-outline-primary">
+                                                <i class="bi bi-download"></i> Download
+                                            </a>
+                                        @else
+                                            <span class="text-muted">No Image</span>
+                                        @endif
                                     </td>
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center gap-1 flex-wrap">

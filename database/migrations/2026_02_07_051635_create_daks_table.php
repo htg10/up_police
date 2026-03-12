@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('daks', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['inward', 'outward']);
+            $table->string('type')->nullable();
             $table->string('letter_from')->nullable();
             $table->date('received_date')->nullable();
             $table->string('letter_number')->nullable();
@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->text('sender_details')->nullable();
             $table->string('attachment')->nullable();
             $table->string('user_id')->nullable();
-            $table->string('status')->default('pending');
+            $table->string('status')->default('Pending');
             $table->string('remark')->nullable();
             $table->date('status_date')->nullable();
             $table->softDeletes();

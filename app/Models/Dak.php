@@ -25,4 +25,25 @@ class Dak extends Model
         'remark',
         'status_date',
     ];
+
+
+    public function assignments()
+    {
+        return $this->hasMany(Dak_History::class);
+    }
+
+    public function currentUser()
+    {
+        return $this->belongsTo(User::class, 'current_user_id');
+    }
+
+    public function histories()
+    {
+        return $this->hasMany(Dak_History::class, 'dak_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

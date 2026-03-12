@@ -1,11 +1,11 @@
 @extends('layouts.backend.app')
 
 @section('style')
-<style>
-    .star{
-        font-size: 15px;
-    }
-</style>
+    <style>
+        .star {
+            font-size: 15px;
+        }
+    </style>
 @endsection
 @section('content')
     <div class="page-content">
@@ -43,16 +43,18 @@
                             <div class="card-body">
                                 <div class="row">
 
-                                    {{-- Dak Type --}}
+                                    {{-- Source Type --}}
                                     <div class="col-lg-4">
                                         <div class="form-group mb-3">
                                             <label for="dak_type" class="form-label fw-bold">
-                                                डाक का प्रकार / Dak Type<sup class="text-danger star">*</sup>
+                                                स्रोत / Source
+                                                <sup class="text-danger">*</sup>
                                             </label>
-                                            <select id="dak_type" name="type" class="form-control" required>
-                                                {{-- <option value="">-- Select --</option> --}}
-                                                <option value="inward">बाहर से आने वाली डाक / Inward</option>
-                                                {{-- <option value="outward">बाहर को जाने वाली डाक / Outward</option> --}}
+                                            <select id="dak_type" name="type" class="form-control dropdown_icon"
+                                                required>
+                                                <option value="registry">Registry / रजिस्ट्री</option>
+                                                <option value="email">Email / ईमेल</option>
+                                                <option value="messenger">Messenger / मैसेंजर</option>
                                             </select>
                                             <div class="invalid-feedback">This field is required.</div>
                                         </div>
@@ -62,7 +64,8 @@
                                     <div class="col-lg-4">
                                         <div class="form-group mb-3">
                                             <label class="form-label fw-bold">
-                                                पत्र कहाँ से प्राप्त हुआ / Letter Received From<sup class="text-danger star">*</sup>
+                                                पत्र कहाँ से प्राप्त हुआ / Letter Received From<sup
+                                                    class="text-danger star">*</sup>
                                             </label>
                                             <input type="text" name="letter_from" class="form-control"
                                                 placeholder="Enter Letter Received From" required>
@@ -76,7 +79,8 @@
                                             <label class="form-label fw-bold">
                                                 प्राप्त / भेजा गया दिनांक / Date<sup class="text-danger star">*</sup>
                                             </label>
-                                            <input type="date" name="received_date" class="form-control" onclick="this.showPicker()">
+                                            <input type="date" name="received_date" class="form-control"
+                                                onclick="this.showPicker()">
                                         </div>
                                     </div>
 

@@ -1,4 +1,9 @@
 @extends('layouts.backend.app')
+@section('style')
+    <style>
+
+    </style>
+@endsection
 @section('content')
     <div class="page-content">
         <div class="container-fluid">
@@ -35,17 +40,17 @@
                             <div class="card-body">
                                 <div class="row">
 
-                                    {{-- Dak Type --}}
+                                    {{-- Source Type --}}
                                     <div class="col-lg-4">
                                         <div class="form-group mb-3">
                                             <label for="dak_type" class="form-label fw-bold">
-                                                डाक का प्रकार / Dak Type
+                                                स्रोत / Source
                                                 <sup class="text-danger">*</sup>
                                             </label>
-                                            <select id="dak_type" name="type" class="form-control" required>
-                                                {{-- <option value="">-- Select --</option> --}}
-                                                <option value="inward">बाहर से आने वाली डाक / Inward</option>
-                                                {{-- <option value="outward">बाहर को जाने वाली डाक / Outward</option> --}}
+                                            <select id="dak_type" name="type" class="form-control dropdown_icon" required>
+                                                <option value="registry">Registry / रजिस्ट्री</option>
+                                                <option value="email">Email / ईमेल</option>
+                                                <option value="messenger">Messenger / मैसेंजर</option>
                                             </select>
                                             <div class="invalid-feedback">This field is required.</div>
                                         </div>
@@ -70,7 +75,8 @@
                                             <label class="form-label fw-bold">
                                                 प्राप्त / भेजा गया दिनांक / Date
                                             </label>
-                                            <input type="date" name="received_date" class="form-control" onclick="this.showPicker()">
+                                            <input type="date" name="received_date" class="form-control"
+                                                onclick="this.showPicker()">
                                         </div>
                                     </div>
 

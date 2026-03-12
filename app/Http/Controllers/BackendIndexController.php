@@ -20,8 +20,10 @@ class BackendIndexController extends Controller
 
             $adminDaks = Dak::all()->count();
             $users = User::where('role_id', 2)->count();
+            $pendingDaks = Dak::where('status', 'Pending')->count();
+            $completeDaks = Dak::where('status', 'Completed')->count();
 
-            return view('admin.index', compact('adminDaks', 'users'));
+            return view('admin.index', compact('adminDaks', 'users', 'pendingDaks', 'completeDaks'));
         } elseif (Auth::user()->role_id == 2) {
 
             $userDaks = Dak::where('user_id', Auth::id())

@@ -36,18 +36,19 @@
                             <div class="card-body">
                                 <div class="row">
 
+                                    {{-- Source Type --}}
                                     <div class="col-lg-4">
                                         <div class="form-group mb-3">
-                                            <label class="form-label fw-bold">
-                                                डाक का प्रकार / Dak Type
+                                            <label for="dak_type" class="form-label fw-bold">
+                                                स्रोत / Source
+                                                <sup class="text-danger">*</sup>
                                             </label>
-                                            <select name="type" class="form-control" required>
-                                                <option value="inward" {{ $dak->type == 'inward' ? 'selected' : '' }}>बाहर से आने वाली डाक / Inward
-                                                </option>
-                                                {{-- <option value="outward" {{ $dak->type == 'outward' ? 'selected' : '' }}>
-                                                    Outward
-                                                </option> --}}
+                                            <select id="dak_type" name="type" class="form-control dropdown_icon" required>
+                                                <option value="registry" {{ $dak->type == 'registry' ? 'selected' : '' }}>Registry / रजिस्ट्री</option>
+                                                <option value="email" {{ $dak->type == 'email' ? 'selected' : '' }}>Email / ईमेल</option>
+                                                <option value="messenger" {{ $dak->type == 'messenger' ? 'selected' : '' }}>Messenger / मैसेंजर</option>
                                             </select>
+                                            <div class="invalid-feedback">This field is required.</div>
                                         </div>
                                     </div>
 
@@ -66,8 +67,8 @@
                                             <label class="form-label fw-bold">
                                                 दिनांक / Date
                                             </label>
-                                            <input type="date" name="received_date" class="form-control" onclick="this.showPicker()"
-                                                value="{{ $dak->received_date }}">
+                                            <input type="date" name="received_date" class="form-control"
+                                                onclick="this.showPicker()" value="{{ $dak->received_date }}">
                                         </div>
                                     </div>
 

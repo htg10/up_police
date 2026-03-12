@@ -23,7 +23,7 @@
         @include('layouts.backend.partials.header')
 
         @include('layouts.backend.partials.sidenav')
-
+c
         <!--[ Main Content ] start -->
         <div class="main-content">
             @yield('content')

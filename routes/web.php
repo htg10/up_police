@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth', 'role:1'], 'as' => 'admin.'], function ()
     Route::patch('/admin/daks/{dak}', [DakController::class, 'update'])->name('daks.update');
     Route::get('/admin/daks/delete/{dak}', [DakController::class, 'destroy']);
     Route::post('/admin/daks/{id}/restore', [DakController::class, 'restore'])->name('daks.restore');
+    Route::get('/admin/daks/{id}/download', [DakController::class, 'downloadDocuments'])->name('daks.download');
 
     Route::patch('admin/daks/{dak}/update-user', [DakController::class, 'updateUser'])->name('daks.updateUser');
     Route::patch('admin/daks/{dak}/update-status', [DakController::class, 'updateStatus'])->name('daks.updateStatus');
@@ -69,6 +70,7 @@ Route::group(['middleware' => ['auth', 'role:2'], 'as' => 'user.'], function () 
     Route::patch('/user/daks/{dak}', [UserController::class, 'update'])->name('daks.update');
     Route::get('/user/daks/delete/{dak}', [UserController::class, 'destroy']);
     Route::post('/user/daks/{id}/restore', [UserController::class, 'restore'])->name('daks.restore');
+    Route::get('/user/daks/{id}/download', [UserController::class, 'downloadDocuments'])->name('daks.download');
 
     Route::patch('user/daks/{dak}/update-user', [UserController::class, 'updateUser'])->name('daks.updateUser');
     Route::patch('user/daks/{dak}/update-status', [UserController::class, 'updateStatus'])->name('daks.updateStatus');
