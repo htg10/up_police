@@ -35,6 +35,7 @@
                                 {{-- <th>टिप्पणी<br>Remark</th> --}}
                                 <th>स्थिति<br>Status</th>
                                 <th>छवि<br>Image</th>
+                                <th>प्राथमिकता<br>Priority</th>
                                 <th>कार्यवाही<br>Action</th>
                                 <th>इतिहास<br>History</th>
                             </tr>
@@ -48,33 +49,7 @@
                                     <td>{{ $dak->received_date }}</td>
                                     <td>{{ $dak->subject }}</td>
                                     <!-- User Type Dropdown -->
-                                    {{-- <td>
-                                        <form action="{{ route('admin.daks.updateUser', $dak->id) }}" method="POST">
-                                            @csrf
-                                            @method('PATCH')
-                                            <select name="user_id" class="form-select form-select-sm"
-                                                onchange="this.form.submit()">
-                                                <option value="">Select User</option>
-                                                @foreach ($users as $user)
-                                                    <option value="{{ $user->id }}"
-                                                        {{ $dak->user_id == $user->id ? 'selected' : '' }}>
-                                                        {{ $user->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <span class="export-remark d-none">{{ $dak->remark }}</span>
 
-                                        <form method="POST" action="{{ route('admin.daks.updateRemark', $dak->id) }}">
-                                            @csrf
-                                            @method('PATCH')
-                                            <input type="text" name="remark" value="{{ $dak->remark }}"
-                                                class="form-control form-control-sm" onchange="this.form.submit()"
-                                                placeholder="Enter Remark">
-                                        </form>
-                                    </td> --}}
                                     <td>
                                         <form action="{{ route('admin.daks.updateUser', $dak->id) }}" method="POST">
                                             @csrf
@@ -141,6 +116,20 @@
                                             <span class="text-muted">No Image</span>
                                         @endif
                                     </td>
+                                    <td>
+                                        <form action="{{ route('admin.daks.updatePriority', $dak->id) }}" method="POST">
+                                            @csrf
+                                            @method('PATCH')
+
+                                            <input type="number" name="priority_days" value="{{ $dak->priority_days }}"
+                                                class="form-control form-control-sm
+                                                {{ $dak->priority_days <= 2 ? 'border-danger text-danger' : '' }}
+                                                {{ $dak->priority_days > 2 && $dak->priority_days <= 5 ? 'border-warning text-warning' : '' }}
+                                                {{ $dak->priority_days > 5 ? 'border-success text-success' : '' }}
+        "
+                                                onchange="this.form.submit()" min="1" placeholder="Days">
+                                        </form>
+                                    </td>
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center gap-1 flex-wrap">
                                             <a href="{{ route('admin.daks.edit', $dak->id) }}"
@@ -162,7 +151,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="9" class="text-center text-muted">No daks found.</td>
+                                    <td colspan="11" class="text-center text-muted">No daks found.</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -237,7 +226,7 @@
         $(document).ready(function() {
             // Only apply DataTables if there's at least one data row
             const rowCount = $('.table tbody tr').length;
-            const isEmpty = $('.table tbody tr td').first().attr('colspan') == 9;
+            const isEmpty = $('.table tbody tr td').first().attr('colspan') == 11;
 
             if (rowCount > 0 && !isEmpty) {
                 $('#daksTable').DataTable({

@@ -23,7 +23,12 @@ class BackendIndexController extends Controller
             $pendingDaks = Dak::where('status', 'Pending')->count();
             $completeDaks = Dak::where('status', 'Completed')->count();
 
-            return view('admin.index', compact('adminDaks', 'users', 'pendingDaks', 'completeDaks'));
+            // Priority Counts
+            $urgentPriority = Dak::where('priority_days', '<=', 2)->count();
+            $mediumPriority = Dak::whereBetween('priority_days', [3, 5])->count();
+            $normalPriority = Dak::where('priority_days', '>', 5)->count();
+
+            return view('admin.index', compact('adminDaks', 'users', 'pendingDaks', 'completeDaks', 'urgentPriority', 'mediumPriority', 'normalPriority'));
         } elseif (Auth::user()->role_id == 2) {
 
             $userDaks = Dak::where('user_id', Auth::id())

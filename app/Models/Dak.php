@@ -17,6 +17,7 @@ class Dak extends Model
         'letter_number',
         'reference_number',
         'subject',
+        'priority_days',
         'sent_to',
         'sender_details',
         'attachment',

@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth', 'role:1'], 'as' => 'admin.'], function ()
     Route::get('/admin/daks/{id}/download', [DakController::class, 'downloadDocuments'])->name('daks.download');
 
     Route::patch('admin/daks/{dak}/update-user', [DakController::class, 'updateUser'])->name('daks.updateUser');
+    Route::patch('admin/daks/{dak}/priority', [DakController::class, 'updatePriority'])->name('daks.updatePriority');
     Route::patch('admin/daks/{dak}/update-status', [DakController::class, 'updateStatus'])->name('daks.updateStatus');
     Route::patch('admin/daks/{dak}/update-remark', [DakController::class, 'updateRemark'])->name('daks.updateRemark');
 

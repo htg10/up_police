@@ -97,8 +97,15 @@
                                             <label class="form-label fw-bold">
                                                 कहाँ भेजा गया / Sent To
                                             </label>
-                                            <input type="text" name="sent_to" class="form-control"
-                                                value="{{ $dak->sent_to }}">
+                                            <select name="user_id" class="form-control dropdown_icon" required>
+                                                <option value="">Select User</option>
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->id }}" {{ $dak->user_id == $user->id ? 'selected' : '' }}>
+                                                        {{ $user->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">This field is required.</div>
                                         </div>
                                     </div>
 

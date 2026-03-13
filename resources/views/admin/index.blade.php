@@ -101,6 +101,33 @@
                     </a>
                 </div>
 
+                <div class="col-md-6 col-lg-4">
+                    <a href="/admin/daks" class="card-link">
+                        <div class="card shadow-lg border-0 bg-danger text-white">
+
+                            <div class="card-body">
+
+                                <div class="d-flex align-items-center justify-content-between">
+
+                                    <div>
+                                        <p class="fw-semibold fs-6 mb-1">Urgent Priority</p>
+                                        <h3 class="mb-0 fw-bold">{{ $urgentPriority }}</h3>
+                                    </div>
+
+                                    {{-- <div class="display-6">
+                                        <i class="bx bx-alarm"></i>
+                                    </div> --}}
+                                    <div class="card-icon display-6">
+                                        <i class="bx bx-alarm" style="color: navy"></i>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
             </div> <!-- end row -->
 
         </div>

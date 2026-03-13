@@ -47,7 +47,8 @@
                                                 स्रोत / Source
                                                 <sup class="text-danger">*</sup>
                                             </label>
-                                            <select id="dak_type" name="type" class="form-control dropdown_icon" required>
+                                            <select id="dak_type" name="type" class="form-control dropdown_icon"
+                                                required>
                                                 <option value="registry">Registry / रजिस्ट्री</option>
                                                 <option value="email">Email / ईमेल</option>
                                                 <option value="messenger">Messenger / मैसेंजर</option>
@@ -108,8 +109,15 @@
                                             <label class="form-label fw-bold">
                                                 कहाँ भेजा गया / Sent To
                                             </label>
-                                            <input type="text" name="sent_to" class="form-control"
-                                                placeholder="Enter Sent To">
+                                            <select name="user_id" class="form-control dropdown_icon" required>
+                                                <option value="">Select User</option>
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->id }}">
+                                                        {{ $user->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">This field is required.</div>
                                         </div>
                                     </div>
 

@@ -15,14 +15,15 @@ class DakController extends Controller
 {
     public function index()
     {
-        $daks = Dak::with('histories.assignedUser', 'histories.sender')->latest()->paginate(10);
+        $daks = Dak::with('histories.assignedUser', 'histories.sender')->orderBy('priority_days', 'asc')->paginate(10);
         $users = User::all();
         return view('admin.daks.index', compact('daks', 'users'));
     }
 
     public function create()
     {
-        return view('admin.daks.create');
+        $users = User::all();
+        return view('admin.daks.create', compact('users'));
     }
 
     // public function updateUser(Request $request, Dak $dak)
@@ -51,6 +52,13 @@ class DakController extends Controller
         return back()->with('success', 'User assigned successfully.');
     }
 
+    public function updatePriority(Request $request, Dak $dak)
+    {
+        $dak->priority_days = $request->priority_days;
+        $dak->save();
+
+        return back()->with('success', 'Priority updated');
+    }
 
     public function updateStatus(Request $request, Dak $dak)
     {
@@ -70,7 +78,7 @@ class DakController extends Controller
     {
         $data = $request->all();
 
-        $data['user_id'] = Auth::id();
+        // $data['user_id'] = Auth::id();
 
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
@@ -89,7 +97,8 @@ class DakController extends Controller
 
     public function edit(Dak $dak)
     {
-        return view('admin.daks.edit', compact('dak'));
+        $users = User::all();
+        return view('admin.daks.edit', compact('dak', 'users'));
     }
 
     public function update(Request $request, Dak $dak)

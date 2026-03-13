@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('letter_number')->nullable();
             $table->string('reference_number')->nullable();
             $table->text('subject')->nullable();
+            $table->integer('priority_days')->nullable();
             $table->string('sent_to')->nullable();
             $table->text('sender_details')->nullable();
             $table->string('attachment')->nullable();
