@@ -31,9 +31,10 @@
                                 <th>पत्रांक संख्या<br>Letter No.</th>
                                 <th>दिनांक<br>Date</th>
                                 <th>संदर्भ<br>Subject</th>
-                                <th>उपयोगकर्ता प्रकार<br>User Type</th>
+                                <th>वर्तमान उपयोगकर्ता<br>Current User</th>
                                 <th>स्थिति<br>Status</th>
                                 <th>छवि<br>Image</th>
+                                <th>प्राथमिकता<br>Priority</th>
                                 <th>कार्यवाही<br>Action</th>
                             </tr>
                         </thead>
@@ -111,6 +112,20 @@
                                         @else
                                             <span class="text-muted">No Image</span>
                                         @endif
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('user.daks.updatePriority', $dak->id) }}" method="POST">
+                                            @csrf
+                                            @method('PATCH')
+
+                                            <input type="number" name="priority_days" value="{{ $dak->priority_days }}"
+                                                class="form-control form-control-sm
+                                                {{ $dak->priority_days <= 2 ? 'border-danger text-danger' : '' }}
+                                                {{ $dak->priority_days > 2 && $dak->priority_days <= 5 ? 'border-warning text-warning' : '' }}
+                                                {{ $dak->priority_days > 5 ? 'border-success text-success' : '' }}
+        "
+                                                onchange="this.form.submit()" min="1" placeholder="Days">
+                                        </form>
                                     </td>
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center gap-1 flex-wrap">

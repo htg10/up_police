@@ -20,7 +20,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('user.daks.create');
+        $users = User::all();
+        return view('user.daks.create', compact('users'));
     }
 
     // public function updateUser(Request $request, Dak $dak)
@@ -47,6 +48,14 @@ class UserController extends Controller
         ]);
 
         return back()->with('success', 'User assigned successfully.');
+    }
+
+    public function updatePriority(Request $request, Dak $dak)
+    {
+        $dak->priority_days = $request->priority_days;
+        $dak->save();
+
+        return back()->with('success', 'Priority updated');
     }
 
     public function updateStatus(Request $request, Dak $dak)
@@ -85,7 +94,8 @@ class UserController extends Controller
 
     public function edit(Dak $dak)
     {
-        return view('user.daks.edit', compact('dak'));
+        $users = User::all();
+        return view('user.daks.edit', compact('dak', 'users'));
     }
 
     public function update(Request $request, Dak $dak)

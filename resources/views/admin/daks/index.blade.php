@@ -31,7 +31,7 @@
                                 <th>पत्रांक संख्या<br>Letter No.</th>
                                 <th>दिनांक<br>Date</th>
                                 <th>संदर्भ<br>Subject</th>
-                                <th>उपयोगकर्ता प्रकार<br>User Type</th>
+                                <th>वर्तमान उपयोगकर्ता<br>Current User</th>
                                 {{-- <th>टिप्पणी<br>Remark</th> --}}
                                 <th>स्थिति<br>Status</th>
                                 <th>छवि<br>Image</th>
